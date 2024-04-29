@@ -1,0 +1,9 @@
+[
+    {"programID": "Data Science", "dept": "DSCI"},
+    {"programID": "Chemical Engineering", "dept": "CHE"},
+    {"programID": "Computer Science", "dept": "CSCI"},
+    {"programID": "Aerospace Engineering", "dept": "AME"},
+    {"programID": "Mechanical Engineering", "dept": "AME"},
+    {"programID": "Civil Engineering", "dept": "CE"},
+    {"programID": "Electrical Engineering", "dept": "EE"}
+]

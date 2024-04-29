@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>USC Viterbi Web Registration</title>
+</head>
+
+<style>
+
+    h1 {
+        font-family: "Times New Roman", serif;
+        font-size: 60px;
+        line-height: 0;
+        font-weight: lighter;
+        padding: 0;
+    }
+
+    h2 {
+        font-family: "Times New Roman", serif;
+        font-size: 30px;
+        font-weight: lighter;
+        line-height: 0;
+    }
+
+    body > p {
+        position: absolute;
+        font-family: Georgia, serif;
+        font-size: 18px;
+        top: 0;
+        right: 150px
+    }
+
+    form[action="/action"] {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Georgia", serif;
+    }
+
+    form[action="/action"] p {
+        font-size: x-large;
+        margin: 10px;
+    }
+
+    form[action="/action"] table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    form[action="/action"] td {
+        font-family: Georgia, serif;
+        font-size: 16px;
+    }
+
+    form[action="/action"] input[type="submit"] {
+        width: 150px;
+        height: 40px;
+        font-family: Georgia, serif;
+        font-size: 20px;
+        background-color: goldenrod;
+    }
+
+    form[action="/action"] input[type="submit"]:hover {
+        background-color: darkgoldenrod;
+    }
+
+    form[action="/logout"] input[type="submit"] {
+        position: absolute;
+        background-color: darkgray;
+        width: 80px;
+        height: 25px;
+        font-size: 14px;
+        font-family: Georgia, serif;
+        top: 15px;
+        right: 10px;
+    }
+
+    form[action="/logout"] input[type="submit"]:hover {
+        background-color: gray;
+    }
+
+</style>
+
+<body>
+    <h1><span style="color: darkred">USC</span>Viterbi</h1>
+    <h2>Web Registration</h2>
+    <p>Welcome, <span style="font-weight: bold">{{fname}}</span></p>
+
+    <form action="/action" method="POST">
+
+        <p>{{option_text[0]}}<br>{{option_text[1]}}</p>
+
+        <table>
+            {% for key, value in options.items() %}
+            <tr>
+                <td>
+                    <input type="radio" name="data_request" id={{key}} value={{key}}>
+                    {{value}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p>
+            <input type="submit" class="submit" value="Continue">
+        </p>
+
+    </form>
+
+    <form action="/logout" method="POST">
+        <input type="submit" value="Log out">
+    </form>
+
+</body>
+</html>

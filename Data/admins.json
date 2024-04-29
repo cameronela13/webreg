@@ -1,0 +1,5 @@
+[
+    {"adminID": "kkardashian", "password": "pass123", "fname": "Kim", "lname": "Kardashian"},
+    {"adminID": "cfolt", "password": "fighton", "fname": "Carol", "lname": "Folt"},
+    {"adminID": "trojanadmin", "password": "usc123", "fname": "Tommy", "lname": "Trojan"}
+]

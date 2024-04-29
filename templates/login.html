@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viterbi WebReg Log On</title>
+</head>
+
+<style>
+    h1 {
+        font-family: "Times New Roman", serif;
+        font-size: 60px;
+        line-height: 0;
+        font-weight: lighter;
+        padding: 0;
+    }
+    h2 {
+        font-family: "Times New Roman", serif;
+        font-size: 30px;
+        font-weight: lighter;
+        color: ghostwhite;
+        line-height: 0;
+    }
+    body {
+        background-color: darkred;
+    }
+    form {
+        text-align: center;
+        position: relative;
+        top: 150px;
+        font-family: "Georgia", serif;
+    }
+    p {
+        font-size: xx-large;
+        color: ghostwhite;
+        margin: 10px;
+    }
+    .field {
+        width: 300px;
+        height: 40px;
+        font-size: 22px;
+        font-family: Georgia, serif;
+    }
+    .button {
+        width: 150px;
+        height: 40px;
+        font-family: Georgia, serif;
+        font-size: 20px;
+        background-color: indianred;
+        color: ghostwhite;
+    }
+</style>
+
+<body>
+    <h1>
+        <span style="color: goldenrod">USC</span><span style="color: ghostwhite">Viterbi</span>
+    </h1>
+    <h2>Web Registration</h2>
+
+    <form action="/login" method="POST">
+        <p>Please sign-on to use<br>Viterbi Web Registration.</p>
+        <input type="text" class="field" id="userID" name="userID" placeholder="Viterbi UserID" required><br><br>
+        <input type="password" class="field" id="pwd" name="pwd" placeholder="Password" required><br><br>
+        <input type="submit" class="button" value="Log in">
+    </form>
+</body>
+</html>

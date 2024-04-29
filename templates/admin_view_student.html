@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{action_text}}</title>
+</head>
+
+<style>
+
+    h1 {
+        font-family: "Times New Roman", serif;
+        font-size: 60px;
+        line-height: 0;
+        font-weight: lighter;
+        padding: 0;
+    }
+
+    h2 {
+        font-family: "Times New Roman", serif;
+        font-size: 30px;
+        font-weight: lighter;
+        line-height: 0;
+    }
+
+    body > p1 {
+        position: absolute;
+        font-family: Georgia, serif;
+        font-size: 18px;
+        top: 18px;
+        right: 150px
+    }
+
+    body > p2 {
+        position: absolute;
+        font-size: 20px;
+        top: 100px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Georgia, serif;
+    }
+
+    form[action="/logout"] input[type="submit"] {
+        position: absolute;
+        background-color: darkgray;
+        width: 80px;
+        height: 25px;
+        font-size: 14px;
+        font-family: Georgia, serif;
+        top: 15px;
+        right: 10px;
+    }
+
+    form[action="/logout"] input[type="submit"]:hover {
+        background-color: gray;
+    }
+
+    .admin, .student, .enrolled, .completed{
+        position: fixed;
+        font-family: Georgia, serif;
+        border-collapse: collapse;
+        font-size: 10px;
+    }
+
+    td, th {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .admin {
+        top: 20%;
+        left: 10px;
+        font-size: 18px;
+    }
+
+
+    .student {
+        position: fixed;
+        top: 20%;
+        right: 10px;
+    }
+
+    .completed {
+        position: fixed;
+        top: 30%;
+        right: 10px;
+    }
+    .enrolled {
+        position: fixed;
+        top: 60%;
+        right: 10px;
+    }
+
+    .action {
+        position: fixed;
+        width: 100px;
+        height: 40px;
+        font-size: 18px;
+        font-family: Georgia, serif;
+        bottom: 20px;
+    }
+
+    form[action="/back"] input[type="submit"] {
+        left: 46%;
+        transform: translateX(-50%);
+        background-color: darkgray;
+    }
+
+    form[action="/back"] input[type="submit"]:hover {
+        background-color: gray;
+    }
+
+    form p3 input[type="submit"] {
+        right: 46%;
+        transform: translateX(50%);
+        background-color: goldenrod;
+    }
+
+    form p3 input[type="submit"]:hover {
+        background-color: darkgoldenrod;
+    }
+
+</style>
+
+<body>
+    <h1><span style="color: darkred">USC</span>Viterbi</h1>
+    <h2>Web Registration</h2>
+    <p1>Welcome, <span style="font-weight: bold">{{fname}}</span></p1>
+
+    <p2>{{action_text}}</p2>
+
+    <table class="admin">
+        <tr>
+            <th colspan="3">Administrator Information</th>
+        </tr>
+        <tr>
+            <th>Admin ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+        </tr>
+        <tr>
+            <td>{{adminID}}</td>
+            <td>{{admin[0]}}</td>
+            <td>{{admin[1]}}</td>
+        </tr>
+    </table><br>
+
+    <table class="student">
+        <tr>
+            <th colspan="5">Student Information</th>
+        </tr>
+        <tr>
+            <th>Student ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Total Credits Completed</th>
+            <th>Major</th>
+        </tr>
+        <tr>
+            <td>{{userID}}</td>
+            <td>{{student[0]}}</td>
+            <td>{{student[1]}}</td>
+            <td>{{student[2]}}</td>
+            <td>{{student[3]}}</td>
+        </tr>
+    </table><br>
+
+    <table class="completed">
+        <tr>
+            <th colspan="4">Completed</th>
+        </tr>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Semester</th>
+            <th>Year</th>
+        </tr>
+        {% for course in cmplt_courses %}
+        <tr>
+            <td>{{course[0]}}</td>
+            <td>{{course[1]}}</td>
+            <td>{{course[2]}}</td>
+            <td>{{course[3]}}</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+
+    <form action="/move_course" method="POST">
+        <table class="enrolled">
+            <tr>
+                <th colspan="5">Enrolled</th>
+            </tr>
+            <tr>
+                <th>Move</th>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Semester</th>
+                <th>Year</th>
+            </tr>
+            {% for course in enr_courses %}
+            <tr>
+                <td><input type="radio" name="courseID" value="{{course[0]}}"></td>
+                <td>{{course[0]}}</td>
+                <td>{{course[1]}}</td>
+                <td>{{course[2]}}</td>
+                <td>{{course[3]}}</td>
+            </tr>
+            {% endfor %}
+            <input type="hidden" name="userID" value={{userID}}>
+        </table>
+        <p3>
+            <input type="submit" class="action" value="Submit">
+        </p3>
+    </form>
+
+    <form action="/logout" method="POST">
+        <input type="submit" value="Log out">
+    </form>
+
+    <form action="/back" method="POST">
+        <input type="submit" class="action" value="Back">
+    </form>
+
+</body>
+</html>
